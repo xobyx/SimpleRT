@@ -15,7 +15,7 @@ jobs:
 #         command: sudo chmod +x ./gradlew
       - run:
           name: Install Android NDK
-          command: source ./circleCiEnvironmentSetup.sh && getAndroidNDK && cd ~/code/simple-rt-android/simple-rt-android
+          command: echo $PWD && source ./circleCiEnvironmentSetup.sh && getAndroidNDK && cd ~/code/simple-rt-android/simple-rt-android
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies          
@@ -33,7 +33,7 @@ jobs:
           name: Run Tests
           command: ./gradlew lint test
       - store_artifacts:
-          path: app/build/reports
-          destination: reports
+          path: app/build/outputs/
+          destination: out
       - store_test_results:
           path: app/build/test-results
