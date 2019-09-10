@@ -24,7 +24,7 @@ jobs:
           command: cd /home/circleci/code/simple-rt-android && ./gradlew build  
       - run:
           name: Download c Dependencies
-          command: apt-get update && apt-get -y install build-essential pkg-config libusb-1.0-0-dev zip
+          command: sudo apt-get update && sudo apt-get -y install build-essential pkg-config libusb-1.0-0-dev zip
       - run:
           name: build simple-rt-cli
           command: |
