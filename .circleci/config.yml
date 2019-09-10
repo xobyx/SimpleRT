@@ -15,7 +15,7 @@ jobs:
 #         command: sudo chmod +x ./gradlew
       - run:
           name: Install Android NDK
-          command: echo $PWD && source ./circleCiEnvironmentSetup.sh && getAndroidNDK && cd ~/code/simple-rt-android/simple-rt-android
+          command: ls && echo $PWD && source ./circleCiEnvironmentSetup.sh && getAndroidNDK && cd ~/code/simple-rt-android/simple-rt-android
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies          
