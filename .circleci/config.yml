@@ -20,11 +20,20 @@ jobs:
           name: Download Dependencies
           command: cd /home/circleci/code/simple-rt-android && ./gradlew androidDependencies          
       - run:
-          name: Download Dependencies
+          name: build apk
           command: cd /home/circleci/code/simple-rt-android && ./gradlew build  
-      
-      
-      
+      - run:
+          name: Download c Dependencies
+          command: apt-get update && apt-get -y install build-essential pkg-config libusb-1.0-0-dev zip
+      - run:
+          name: build simple-rt-cli
+          command: |
+            cd /home/circleci/code/simple-rt-cli/
+            make
+            zip -r simple-rt_linux.zip iface_up.sh simple-rt build
+            mv simple-rt_linux.zip /home/circleci/code/simple-rt-android/app/build/outputs/
+            
+
       - save_cache:
           paths:
             - ~/.gradle
