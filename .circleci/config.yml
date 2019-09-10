@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/code/simple-rt-android/
+    working_directory: ~/code/simple-rt-android/simple-rt-android
     docker:
       - image: circleci/android:api-24
     environment:
@@ -15,7 +15,7 @@ jobs:
 #         command: sudo chmod +x ./gradlew
       - run:
           name: Install Android NDK
-          command: source ./circleCiEnvironmentSetup.sh && getAndroidNDK
+          command: source ./circleCiEnvironmentSetup.sh && getAndroidNDK && cd ~/code/simple-rt-android/simple-rt-android
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies          
