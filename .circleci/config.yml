@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/code
+    working_directory: ~/code/simple-rt-android/
     docker:
       - image: circleci/android:api-24
     environment:
