@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+          key: jars-{{ checksum "/home/circleci/code/simple-rt-android/build.gradle" }}-{{ checksum  "/home/circleci/code/simple-rt-android/app/build.gradle" }}
 #      - run:
 #         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this. 
 #         command: sudo chmod +x ./gradlew
@@ -28,12 +28,9 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-          name: Run Tests
-          command: ./gradlew lint test
+          key: jars-{{ checksum "/home/circleci/code/simple-rt-android/build.gradle" }}-{{ checksum  "/home/circleci/code/simple-rt-android/app/build.gradle" }}
+     
       - store_artifacts:
           path: /home/circleci/code/simple-rt-android/app/build/outputs/
           destination: out
-      - store_test_results:
-          path: app/build/test-results
+      
