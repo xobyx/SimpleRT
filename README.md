@@ -65,7 +65,11 @@ Create local.properties file in root dir, it should be looking like that:
    sudo apt-get install build-essential pkg-config libusb-1.0-0-dev
    ```
 
-   Makefile is universal for all platforms, just type make.
+   Makefile is universal for all platforms, just type "make && make install" to install it in prefix /usr/local and
+   check /usr/local/sbin is in your PATH-variable.  
+   If you want to change the prefix path eg. to install it in /usr instead of /usr/local you can
+   type "make prefix=/usr && make prefix=/usr install".  
+   If you don't want to install but just run it from within build directory you can type "make iface_up_sh_path=.".
 
 Usage:
 
